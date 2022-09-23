@@ -1,12 +1,14 @@
 {
   "name": "com.soap.soaputils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "the tools I often use",
   "displayName": "SoapUtils",
   "unity": "2021.3",
   "unityRelease": "1f1",
   "dependencies": {
-    "jp.hadashikick.vcontainer": "1.11.1"
+    "jp.hadashikick.vcontainer": "1.11.1",
+    "com.neuecc.unirx": "7.1.0",
+    "com.cysharp.unitask": "2.2.5"
   },
   "author": {
     "name": "Soap",
