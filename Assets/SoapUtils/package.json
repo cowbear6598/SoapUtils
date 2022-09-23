@@ -4,5 +4,6 @@
   "description": "the tools I often use",
   "displayName": "SoapUtils",
   "dependencies": {
+    "jp.hadashikick.vcontainer": "1.11.1"
   }
 }
