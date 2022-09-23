@@ -1,0 +1,8 @@
+{
+  "name": "com.soap.utils",
+  "version": "0.0.1",
+  "description": "the tools I often use",
+  "displayName": "SoapUtils",
+  "dependencies": {
+  }
+}
