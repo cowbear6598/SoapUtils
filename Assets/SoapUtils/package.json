@@ -3,7 +3,17 @@
   "version": "0.0.1",
   "description": "the tools I often use",
   "displayName": "SoapUtils",
+  "unity": "2021.3",
+  "unityRelease": "1f1",
   "dependencies": {
     "jp.hadashikick.vcontainer": "1.11.1"
+  },
+  "author": {
+    "name": "Soap",
+    "email": "cowbear6598@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cowbear6598/SoapUtils"
   }
 }
