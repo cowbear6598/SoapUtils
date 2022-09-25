@@ -2,7 +2,8 @@
     "name": "SoapUtilsEditor",
     "rootNamespace": "",
     "references": [
-        "GUID:0acc523941302664db1f4e527237feb3"
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "includePlatforms": [
         "Editor"
