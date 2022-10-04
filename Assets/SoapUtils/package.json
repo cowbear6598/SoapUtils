@@ -7,9 +7,8 @@
   "unityRelease": "1f1",
   "dependencies": {
     "com.svermeulen.extenject": "9.2.0-stcf3",
-    "com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
-    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-    "dev.kyubuns.animetask": "https://github.com/kyubuns/AnimeTask.git?path=Assets/AnimeTask",
+    "com.neuecc.unirx": "7.1.0",
+    "com.cysharp.unitask": "2.3.1",
     "com.unity.test-framework": "1.1.33"
   },
   "author": {
