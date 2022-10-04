@@ -140,13 +140,13 @@
       }
     },
     "dev.kyubuns.animetask": {
-      "version": "https://github.com/kyubuns/AnimeTask.git?path=Assets/AnimeTask",
+      "version": "1.13.1",
       "depth": 0,
-      "source": "git",
+      "source": "registry",
       "dependencies": {
-        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+        "com.cysharp.unitask": "git+https://github.com/Cysharp/UniTask.git"
       },
-      "hash": "48862d868578f75bdff7a458517577e2023823fc"
+      "url": "https://package.openupm.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

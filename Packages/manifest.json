@@ -9,7 +9,6 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.4",
     "com.unity.ugui": "1.0.0",
-    "dev.kyubuns.animetask": "https://github.com/kyubuns/AnimeTask.git?path=Assets/AnimeTask",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -40,7 +39,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "dev.kyubuns.animetask": "1.13.1"
   },
   "scopedRegistries": [
     {
@@ -49,7 +49,8 @@
       "scopes": [
         "com.svermeulen.extenject",
         "com.cysharp.unitask",
-        "com.neuecc.unirx"
+        "com.neuecc.unirx",
+        "dev.kyubuns.animetask"
       ]
     }
   ]
