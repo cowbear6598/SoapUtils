@@ -1,18 +1,18 @@
 {
   "dependencies": {
     "com.cysharp.unitask": {
-      "version": "2.2.5",
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://package.openupm.com"
+      "hash": "e999268305432098f1eece2df35bf28043e47243"
     },
     "com.neuecc.unirx": {
-      "version": "7.1.0",
+      "version": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://package.openupm.com"
+      "hash": "284d5c50d3f1ddd9fa7df3d382ea904732a9c2ff"
     },
     "com.svermeulen.extenject": {
       "version": "9.2.0-stcf3",
@@ -138,6 +138,15 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "dev.kyubuns.animetask": {
+      "version": "https://github.com/kyubuns/AnimeTask.git?path=Assets/AnimeTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+      },
+      "hash": "48862d868578f75bdff7a458517577e2023823fc"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
