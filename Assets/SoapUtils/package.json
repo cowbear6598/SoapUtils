@@ -1,14 +1,14 @@
 {
   "name": "com.soap.soaputils",
-  "version": "0.1.2",
-  "description": "the tools I often use",
+  "version": "0.1.1",
+  "description": "我常用的開發工具",
   "displayName": "SoapUtils",
   "unity": "2021.3",
   "unityRelease": "1f1",
   "dependencies": {
     "com.svermeulen.extenject": "9.2.0-stcf3",
     "com.neuecc.unirx": "7.1.0",
-    "com.cysharp.unitask": "2.3.1",
+    "com.cysharp.unitask": "2.2.5",
     "com.unity.test-framework": "1.1.33"
   },
   "author": {
