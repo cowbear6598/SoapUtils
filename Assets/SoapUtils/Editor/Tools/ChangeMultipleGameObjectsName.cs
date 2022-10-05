@@ -18,6 +18,7 @@ namespace SoapUtils.Editor.Tools
         private string prefixesName = "";
         private string suffixesName = "";
         private int    startOrder   = 0;
+        private bool   IsSameGroup  = true;
 
         private class GameObjectOriginData
         {
@@ -38,6 +39,7 @@ namespace SoapUtils.Editor.Tools
             prefixesName = EditorGUILayout.TextField("Prefixes Name: ", prefixesName);
             suffixesName = EditorGUILayout.TextField("Suffixes Name: ", suffixesName);
             startOrder   = EditorGUILayout.IntField("Start Order: ", startOrder);
+            IsSameGroup  = EditorGUILayout.Toggle("Same Group?", IsSameGroup);
 
             if (GUILayout.Button("Change"))
             {
@@ -49,15 +51,18 @@ namespace SoapUtils.Editor.Tools
         {
             int          startIndex   = startOrder;
             
-            Transform[] selectedObjs   = Selection.transforms;
-            int[]       selectedObjsOrder = new int[selectedObjs.Length];
+            Transform[] selectedPos   = Selection.transforms;
+            int[]       selectedPosOrder = new int[selectedPos.Length];
 
-            for (int i = 0; i < selectedObjs.Length; i++)
+            for (int i = 0; i < selectedPos.Length; i++)
             {
-                selectedObjsOrder[i] = selectedObjs[i].transform.root.GetSiblingIndex();
+                if (IsSameGroup)
+                    selectedPosOrder[i] = selectedPos[i].GetSiblingIndex();
+                else
+                    selectedPosOrder[i] = selectedPos[i].transform.root.GetSiblingIndex();
             }
 
-            Transform[] orderObjs = SortUtils.BubbleSort(selectedObjsOrder, selectedObjs);
+            Transform[] orderObjs = SortUtils.BubbleSort(selectedPosOrder, selectedPos);
 
             for (int i = 0; i < orderObjs.Length; i++)
             {
