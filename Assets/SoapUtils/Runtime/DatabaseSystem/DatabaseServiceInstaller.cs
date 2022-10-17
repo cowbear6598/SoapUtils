@@ -4,9 +4,9 @@ using Zenject;
 namespace SoapUtils.Runtime.DatabaseSystem
 {
     [CreateAssetMenu(menuName = "Soap/DatabaseSettings")]
-    public class DatabaseSystemInstaller : ScriptableObjectInstaller<DatabaseSystemInstaller>
+    public class DatabaseServiceInstaller : ScriptableObjectInstaller<DatabaseServiceInstaller>
     {
-        public DatabaseSystem.Settings settings;
+        public DatabaseService.Settings settings;
 
         public override void InstallBindings()
         {

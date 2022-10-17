@@ -7,7 +7,7 @@ using Zenject;
 
 namespace SoapUtils.Runtime.DatabaseSystem
 {
-    public class DatabaseSystem
+    public class DatabaseService
     {
         [Inject] private Settings settings;
 
