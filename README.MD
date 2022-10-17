@@ -1,5 +1,5 @@
-#安裝 (Install)
-###Git
+## 安裝 (Install)
+
 
 - PlayerSetting -> Package Manager
 ```
