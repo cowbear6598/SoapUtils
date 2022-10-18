@@ -1,5 +1,5 @@
 {
-    "name": "SoapUtilsRuntime",
+    "name": "SoapUtils",
     "rootNamespace": "",
     "references": [
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
@@ -8,7 +8,7 @@
         "GUID:9e24947de15b9834991c9d8411ea37cf",
         "GUID:84651a3751eca9349aac36a66bba901b",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:1a4cffb770ce347a39cea41a326324ec"
+        "GUID:552d59ef059be424e8a783bb0725e44c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

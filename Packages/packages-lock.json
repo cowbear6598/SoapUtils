@@ -160,15 +160,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "dev.kyubuns.animetask": {
-      "version": "1.13.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.cysharp.unitask": "git+https://github.com/Cysharp/UniTask.git"
-      },
-      "url": "https://package.openupm.com"
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

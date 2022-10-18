@@ -9,11 +9,10 @@ Scope(s):
          com.svermeulen.extenject
          com.cysharp.unitask
          com.neuecc.unirx
-         dev.kyubuns.animetask
 ```
 - Add package form git url
 ```
 https://github.com/cowbear6598/SoapUtils.git?path=Assets/SoapUtils
 ```
 
-- AnimeTask 錯誤的話請把它 package 裡面的 UniTask 版本改成 2.2.5
+- 感謝 AnimeTask 提供 Tween 的功能，但我無法直接使用 Package 去連結，所以只能把它專案裡的功能複製到我這邊，以下是他專案網址：<https://github.com/kyubuns/AnimeTask>

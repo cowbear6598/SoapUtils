@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "dev.kyubuns.animetask": "1.13.1",
     "com.cysharp.unitask": "2.2.5",
     "com.neuecc.unirx": "7.1.0",
     "com.svermeulen.extenject": "9.2.0-stcf3",
@@ -50,8 +49,7 @@
       "scopes": [
         "com.svermeulen.extenject",
         "com.cysharp.unitask",
-        "com.neuecc.unirx",
-        "dev.kyubuns.animetask"
+        "com.neuecc.unirx"
       ]
     }
   ]
