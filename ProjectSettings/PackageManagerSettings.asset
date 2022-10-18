@@ -32,6 +32,7 @@ MonoBehaviour:
     - com.svermeulen.extenject
     - com.cysharp.unitask
     - com.neuecc.unirx
+    - dev.kyubuns.animetask
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: package.openupm.com

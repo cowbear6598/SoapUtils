@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using AnimeTask;
+using UnityEngine;
 
 namespace SoapUtils.Runtime.SceneSystem
 {
@@ -10,7 +11,7 @@ namespace SoapUtils.Runtime.SceneSystem
         {
             canvasGroup.interactable = canvasGroup.blocksRaycasts = IsOn;
 
-            // await Easing.Create<Linear>(IsOn ? 1 : 0, 0.25f).ToColorA(canvasGroup);
+            await Easing.Create<Linear>(IsOn ? 1 : 0, 0.25f).ToColorA(canvasGroup);
         }
     }
 }

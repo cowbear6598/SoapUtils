@@ -1,4 +1,5 @@
 ﻿using System;
+using AnimeTask;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -39,7 +40,7 @@ namespace SoapUtils.Runtime.SoundSystem
 
         private async void ChangeBGM(AudioClip clip)
         {
-            // await Easing.Create<Linear>(1, 0, 0.25f).ToAction(volume => bgmSound.volume = volume);
+            await Easing.Create<Linear>(1, 0, 0.25f).ToAction(volume => bgmSound.volume = volume);
             
             bgmSound.Stop();
                 
@@ -52,7 +53,7 @@ namespace SoapUtils.Runtime.SoundSystem
             
             bgmSound.Play();
             
-            // await Easing.Create<Linear>(0, 1, 0.25f).ToAction(volume => bgmSound.volume = volume);
+            await Easing.Create<Linear>(0, 1, 0.25f).ToAction(volume => bgmSound.volume = volume);
         }
 
         public void PlaySound(AssetReferenceT<AudioClip> clip, float volume = 1)

@@ -1,4 +1,5 @@
 ﻿using System;
+using AnimeTask;
 using Cysharp.Threading.Tasks;
 using SoapUtils.Runtime.SoundSystem;
 using TMPro;
@@ -75,9 +76,9 @@ namespace SoapUtils.Runtime.NotifySystem
 
             float tweenTime = 0.1f;
 
-            // await UniTask.WhenAll(
-            //     Easing.Create<Linear>(IsOn ? 1 : 0, tweenTime).ToColorA(canvasGroup),
-            //     Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, tweenTime).ToLocalScale(bgPos));
+            await UniTask.WhenAll(
+                Easing.Create<Linear>(IsOn ? 1 : 0, tweenTime).ToColorA(canvasGroup),
+                Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, tweenTime).ToLocalScale(bgPos));
         }
     }
 }
