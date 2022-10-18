@@ -1,12 +1,18 @@
-﻿using AnimeTask;
+﻿using System;
+using AnimeTask;
 using UnityEngine;
 
 namespace SoapUtils.Runtime.SceneSystem
 {
     public class SceneView : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup canvasGroup;
-        
+        private CanvasGroup canvasGroup;
+
+        private void Awake()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+
         public async void SetAppear(bool IsOn)
         {
             canvasGroup.interactable = canvasGroup.blocksRaycasts = IsOn;
