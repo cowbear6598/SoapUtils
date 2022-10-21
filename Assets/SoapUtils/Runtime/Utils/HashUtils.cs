@@ -20,7 +20,7 @@ namespace SoapUtils.Runtime.Utils
                 byte[] hashMessage = hmacsha256.ComputeHash(messageBytes);
                 sign = BitConverter.ToString(hashMessage).Replace("-", "").ToLower();;
             }
-        
+
             return sign;
         }
     }
