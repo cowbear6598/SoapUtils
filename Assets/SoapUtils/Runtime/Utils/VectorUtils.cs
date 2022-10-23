@@ -9,13 +9,13 @@ namespace SoapUtils.Runtime.Utils
             Vector3 newPosition   = targetPosition;
             Vector3 deltaPosition = targetPosition - centerPosition;
 
-            // 計算是否超出半徑
+            // 計算是否超出半徑 
             var distance = Vector3.Distance(centerPosition, targetPosition);
 
             if (distance > radius)
             {
                 deltaPosition *= radius / distance;
-                newPosition   =  centerPosition + deltaPosition;
+                newPosition   =  (centerPosition + deltaPosition) - centerPosition;
             }
 
             return (newPosition, deltaPosition);
