@@ -5,11 +5,6 @@ using Zenject;
 
 namespace SoapUtils.Runtime.SceneSystem
 {
-    public interface ISceneService
-    {
-        void LoadScene(SceneStateHandler.SceneType sceneType);
-    }
-    
     public class SceneService : ISceneService
     {
         [Inject] private readonly SceneView         sceneView;
