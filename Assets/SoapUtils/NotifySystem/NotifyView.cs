@@ -52,7 +52,7 @@ namespace SoapUtils.NotifySystem
             contentText.text = content;
 
             confirmBtn.gameObject.SetActive(true);
-            confirmBtn.gameObject.SetActive(true);
+            cancelBtn.gameObject.SetActive(true);
 
             SetButtonListener(confirmBtn, confirmAction, true);
             SetButtonListener(cancelBtn, cancelAction, false);
