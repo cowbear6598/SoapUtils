@@ -6,6 +6,7 @@ namespace SoapUtils.SceneSystem
     {
         [Inject] private readonly LoadHandler loadHandler;
 
-        public void DoLoadScene(int sceneIndex) => loadHandler.LoadScene(sceneIndex);
+        public void DoLoadScene(int sceneIndex, bool IsFadeOut = true) => loadHandler.LoadScene(sceneIndex, IsFadeOut);
+        public void DoFadeOut() => loadHandler.FadeOut();
     }
 }

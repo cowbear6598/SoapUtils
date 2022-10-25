@@ -2,6 +2,7 @@
 {
     public interface ISceneService
     {
-        void DoLoadScene(int sceneIndex);
+        void DoLoadScene(int sceneIndex, bool IsFadeOut = true);
+        void DoFadeOut();
     }
 }

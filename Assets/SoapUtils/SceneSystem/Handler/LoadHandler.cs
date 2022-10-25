@@ -10,7 +10,7 @@ namespace SoapUtils.SceneSystem
         [Inject] private readonly StateHandler stateHandler;
         [Inject] private readonly SceneView    view;
         
-        public async void LoadScene(int sceneIndex)
+        public async void LoadScene(int sceneIndex, bool IsFadeOut = true)
         {
             if (stateHandler.GetState() != SceneState.Complete) return;
             
@@ -36,6 +36,14 @@ namespace SoapUtils.SceneSystem
 
             stateHandler.SetCurrentScene(currentScene, sceneIndex);
 
+            if (IsFadeOut)
+                view.SetAppear(false);
+        }
+
+        public void FadeOut()
+        {
+            if (stateHandler.GetState() != SceneState.Complete) return;
+            
             view.SetAppear(false);
         }
     }
