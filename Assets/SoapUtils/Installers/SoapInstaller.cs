@@ -32,6 +32,8 @@ namespace SoapUtils.Installers
 
         private void InstallScene()
         {
+            Container.Bind<SceneView>().FromComponentInHierarchy().AsSingle();
+            
             Container.Bind<LoadHandler>().AsSingle();
             Container.Bind<StateHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneService>().AsSingle();
