@@ -1,19 +1,11 @@
-﻿using SoapUtils.SceneSystem.Handler;
-using Zenject;
+﻿using Zenject;
 
 namespace SoapUtils.SceneSystem
 {
-    public enum SceneType
+    internal class SceneService : ISceneService
     {
-        Bootstrap = 0,
-        Menu      = 1,
-        Game      = 2
-    }
+        [Inject] private readonly LoadHandler loadHandler;
 
-    public class SceneService : ISceneService
-    {
-        [Inject] private readonly LoadHandler  loadHandler;
-
-        public void DoLoadScene(SceneType sceneType) => loadHandler.LoadScene(sceneType);
+        public void DoLoadScene(int sceneIndex) => loadHandler.LoadScene(sceneIndex);
     }
 }

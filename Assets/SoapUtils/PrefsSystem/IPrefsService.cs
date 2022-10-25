@@ -2,14 +2,14 @@
 {
     public interface IPrefsService
     {
-        void SetString(PrefsService.PrefsType type, string content);
-        void SetInt(PrefsService.PrefsType type, int number);
-        void SetFloat(PrefsService.PrefsType type, float number);
+        void SetString(string name, string content);
+        void SetInt(string name, int number);
+        void SetFloat(string name, float number);
 
-        bool Exist(PrefsService.PrefsType type);
+        bool Exist(string name);
         
-        string GetString(PrefsService.PrefsType type);
-        int GetInt(PrefsService.PrefsType type);
-        float GetFloat(PrefsService.PrefsType type);
+        string GetString(string name);
+        int GetInt(string name);
+        float GetFloat(string name);
     }
 }

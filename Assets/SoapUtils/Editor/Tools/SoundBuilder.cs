@@ -35,9 +35,8 @@ namespace SoapUtils.Editor.Tools
 
         private void Build()
         {
-            Transform      rootTrans = new GameObject("SoundGroup").transform;
-            SoundView      soundView = rootTrans.gameObject.AddComponent<SoundView>();
-            ZenjectBinding binding   = rootTrans.gameObject.AddComponent<ZenjectBinding>();
+            Transform rootTrans = new GameObject("SoundGroup").transform;
+            SoundView soundView = rootTrans.gameObject.AddComponent<SoundView>();
 
             // 創建背景音樂
             AudioSource bgmSound = new GameObject("BGM_Sound").AddComponent<AudioSource>();

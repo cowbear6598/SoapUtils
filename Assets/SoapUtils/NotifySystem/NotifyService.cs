@@ -3,7 +3,7 @@ using Zenject;
 
 namespace SoapUtils.NotifySystem
 {
-    public class NotifyService : INotifyService
+    internal class NotifyService : INotifyService
     {
         [Inject] private readonly NotifyView notifyView;
         

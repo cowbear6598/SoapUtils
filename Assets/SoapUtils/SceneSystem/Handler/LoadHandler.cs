@@ -3,14 +3,14 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace SoapUtils.SceneSystem.Handler
+namespace SoapUtils.SceneSystem
 {
-    public class LoadHandler
+    internal class LoadHandler
     {
         [Inject] private readonly StateHandler stateHandler;
         [Inject] private readonly SceneView    view;
         
-        public async void LoadScene(SceneType sceneType)
+        public async void LoadScene(int sceneIndex)
         {
             if (stateHandler.GetState() != SceneState.Complete) return;
             
@@ -21,12 +21,12 @@ namespace SoapUtils.SceneSystem.Handler
             
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             
-            await SceneManager.LoadSceneAsync((int)sceneType, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
             
             // 釋放前場景
             stateHandler.ChangeState(SceneState.Unloading);
 
-            if (stateHandler.GetSceneType() != SceneType.Bootstrap)
+            if (stateHandler.GetSceneIndex() != 0)
                 await SceneManager.UnloadSceneAsync(stateHandler.GetCurrentScene());
 
             // 讀取完成
@@ -34,7 +34,7 @@ namespace SoapUtils.SceneSystem.Handler
 
             SceneManager.SetActiveScene(currentScene);
 
-            stateHandler.SetCurrentScene(currentScene, sceneType);
+            stateHandler.SetCurrentScene(currentScene, sceneIndex);
 
             view.SetAppear(false);
         }

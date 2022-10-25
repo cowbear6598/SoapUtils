@@ -2,6 +2,6 @@
 {
     public interface ISceneService
     {
-        void DoLoadScene(SceneType sceneType);
+        void DoLoadScene(int sceneIndex);
     }
 }
