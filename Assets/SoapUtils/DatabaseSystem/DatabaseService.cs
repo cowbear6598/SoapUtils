@@ -10,5 +10,6 @@ namespace SoapUtils.DatabaseSystem
         
         public async UniTask<string> DoGet(int domainIndex, string api, params string[] data) => await getHandler.Get(domainIndex, api, data);
         public async UniTask<string> DoPost(int domainIndex, string api, object data) => await postHandler.Post(domainIndex, api, data);
+        public async UniTask<string> DoPost(int domainIndex, string api, string token, object data) => await postHandler.Post(domainIndex, api, token, data);
     }
 }

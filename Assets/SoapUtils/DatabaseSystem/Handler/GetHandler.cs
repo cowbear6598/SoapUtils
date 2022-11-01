@@ -14,8 +14,8 @@ namespace SoapUtils.DatabaseSystem
         public async UniTask<string> Get(int domainIndex, string api, params string[] data)
         {
             using UnityWebRequest req = UnityWebRequest.Get(url(domainIndex, api, data));
-            
             req.timeout = settings.timeout;
+            
             await req.SendWebRequest();
             
             if (req.result == UnityWebRequest.Result.Success)
@@ -28,7 +28,7 @@ namespace SoapUtils.DatabaseSystem
 
             throw new Exception(req.error);
         }
-        
+
         private string url(int domainIndex, string api, params string[] data)
         {
             string finalUrl = $"{settings.domains[domainIndex]}{api}?";

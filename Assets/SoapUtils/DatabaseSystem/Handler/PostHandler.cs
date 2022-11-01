@@ -11,17 +11,15 @@ namespace SoapUtils.DatabaseSystem
     internal class PostHandler
     {
         [Inject] private SoapSettingsInstaller.DatabaseSettings settings;
-        
+
         public async UniTask<string> Post(int domainIndex, string api, object data)
         {
-            using UnityWebRequest req = new UnityWebRequest(url(domainIndex, api), "POST");
-            req.uploadHandler   = GetUploadHandler(data);
-            req.downloadHandler = new DownloadHandlerBuffer();
+            var req = SetRequest(domainIndex, api, data);
+
             req.SetRequestHeader("Content-Type", "application/json");
-            req.timeout = settings.timeout;
             
             await req.SendWebRequest();
-            
+
             if (req.result == UnityWebRequest.Result.Success)
             {
 #if UNITY_EDITOR
@@ -32,8 +30,37 @@ namespace SoapUtils.DatabaseSystem
 
             throw new Exception(req.error);
         }
-        
+
+        public async UniTask<string> Post(int domainIndex, string api, string token, object data)
+        {
+            var req = SetRequest(domainIndex, api, data);
+
+            req.SetRequestHeader("Content-Type", "application/json");
+            req.SetRequestHeader("Authorization", token);
+            
+            await req.SendWebRequest();
+
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+#if UNITY_EDITOR
+                Debug.Log($"{req.url}: \n {req.downloadHandler.text}");
+#endif
+                return req.downloadHandler.text;
+            }
+
+            throw new Exception(req.error);
+        }
+
         private string url(int domainIndex, string api) => $"{settings.domains[domainIndex]}{api}";
+
+        private UnityWebRequest SetRequest(int domainIndex, string api, object data)
+        {
+            using UnityWebRequest req = new UnityWebRequest(url(domainIndex, api), "POST");
+            req.uploadHandler   = GetUploadHandler(data);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.timeout         = settings.timeout;
+            return req;
+        }
 
         private UploadHandler GetUploadHandler(object data)
         {
