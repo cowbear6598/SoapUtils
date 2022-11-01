@@ -28,7 +28,7 @@ https://github.com/cowbear6598/SoapUtils.git?path=Assets/SoapUtils
 
 ### 使用
 - GET
-- 
+
 ```
 DoGet(int domainIndex, string api, params string[] data);
 ```
@@ -38,4 +38,11 @@ DoGet(int domainIndex, string api, params string[] data);
 ```
 DoPost(int domainIndex, string api, object data)
 DoPost(int domainIndex, string api, string token, object data)
+```
+
+- PUT
+
+```
+DoPut(int domainIndex, string api, object data)
+DoPut(int domainIndex, string api, string token, object data)
 ```

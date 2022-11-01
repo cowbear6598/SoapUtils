@@ -43,6 +43,7 @@ namespace SoapUtils.Installers
         {
             Container.Bind<GetHandler>().AsSingle();
             Container.Bind<PostHandler>().AsSingle();
+            Container.Bind<PutHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<DatabaseService>().AsSingle();
         }
 
