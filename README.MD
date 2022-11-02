@@ -46,3 +46,9 @@ DoPost(int domainIndex, string api, string token, object data)
 DoPut(int domainIndex, string api, object data)
 DoPut(int domainIndex, string api, string token, object data)
 ```
+
+- DELETE
+
+```
+DoDelete(int domainIndex, string api, string token, object data)
+```

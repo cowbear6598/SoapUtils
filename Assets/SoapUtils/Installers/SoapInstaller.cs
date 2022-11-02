@@ -41,9 +41,7 @@ namespace SoapUtils.Installers
 
         private void InstallDatabase()
         {
-            Container.Bind<GetHandler>().AsSingle();
-            Container.Bind<PostHandler>().AsSingle();
-            Container.Bind<PutHandler>().AsSingle();
+            Container.Bind<RequestHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<DatabaseService>().AsSingle();
         }
 
