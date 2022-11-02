@@ -1,4 +1,4 @@
-﻿using AnimeRx;
+﻿using AnimeTask;
 using UniRx;
 using UnityEngine;
 
@@ -12,7 +12,6 @@ namespace SoapUtils.SceneSystem
         [SerializeField] private float         rotateSpeed;
         
         private CompositeDisposable updateDisposable;
-        private CompositeDisposable alphaDisposable;
             
         private void Awake()
         {
@@ -24,7 +23,7 @@ namespace SoapUtils.SceneSystem
             loadingTrans.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime), Space.Self);
         }
         
-        public void SetAppear(bool IsOn)
+        public async void SetAppear(bool IsOn)
         {
             if (IsOn)
             {
@@ -34,14 +33,8 @@ namespace SoapUtils.SceneSystem
 
             canvasGroup.interactable = canvasGroup.blocksRaycasts = IsOn;
 
-            alphaDisposable?.Dispose();
+            await Easing.Create<Linear>(IsOn ? 1 : 0, 0.25f).ToColorA(canvasGroup);
             
-            alphaDisposable = new CompositeDisposable();
-
-            Anime.Play(canvasGroup.alpha, IsOn ? 1 : 0, Easing.Linear(0.25f))
-                 .Subscribe(alpha => canvasGroup.alpha = alpha)
-                 .AddTo(alphaDisposable);
-
             if(!IsOn)
                 updateDisposable.Dispose();
         }

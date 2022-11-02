@@ -1,9 +1,8 @@
 ﻿using System;
-using AnimeRx;
+using AnimeTask;
 using Cysharp.Threading.Tasks;
 using SoapUtils.SoundSystem;
 using TMPro;
-using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -24,9 +23,6 @@ namespace SoapUtils.NotifySystem
 
         [SerializeField] private AssetReferenceT<AudioClip> clip_Click;
         [SerializeField] private AssetReferenceT<AudioClip> clip_Cancel;
-
-        private CompositeDisposable alphaDisposable;
-        private CompositeDisposable scaleDisposable;
 
         private void Awake()
         {
@@ -74,17 +70,15 @@ namespace SoapUtils.NotifySystem
             button.onClick.AddListener(() => action?.Invoke());
         }
 
-        public void SetAppear(bool IsOn)
+        public async void SetAppear(bool IsOn)
         {
-            alphaDisposable?.Dispose();
-            scaleDisposable?.Dispose();
-            
             canvasGroup.interactable = canvasGroup.blocksRaycasts = IsOn;
 
             float tweenTime = 0.1f;
 
-            var alphaAnime = Anime.Play(canvasGroup.alpha, IsOn ? 1 : 0, Easing.Linear(tweenTime)).Subscribe(alpha => canvasGroup.alpha = alpha).AddTo(alphaDisposable);
-            var scaleAnime = Anime.Play(bgPos.transform.localScale, IsOn ? Vector3.one : Vector3.zero, Easing.Linear(tweenTime)).SubscribeToLocalScale(bgPos).AddTo(scaleDisposable);
+            await UniTask.WhenAll(
+                Easing.Create<Linear>(IsOn ? 1 : 0, tweenTime).ToColorA(canvasGroup),
+                Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, tweenTime).ToLocalScale(bgPos));
         }
     }
 }
