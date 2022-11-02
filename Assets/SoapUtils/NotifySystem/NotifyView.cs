@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using AnimeTask;
 using Cysharp.Threading.Tasks;
 using SoapUtils.SoundSystem;
@@ -23,6 +24,8 @@ namespace SoapUtils.NotifySystem
 
         [SerializeField] private AssetReferenceT<AudioClip> clip_Click;
         [SerializeField] private AssetReferenceT<AudioClip> clip_Cancel;
+
+        private CancellationTokenSource tokenSource;
 
         private void Awake()
         {
@@ -70,15 +73,17 @@ namespace SoapUtils.NotifySystem
             button.onClick.AddListener(() => action?.Invoke());
         }
 
-        public async void SetAppear(bool IsOn)
+        public void SetAppear(bool IsOn)
         {
             canvasGroup.interactable = canvasGroup.blocksRaycasts = IsOn;
 
             float tweenTime = 0.1f;
 
-            await UniTask.WhenAll(
-                Easing.Create<Linear>(IsOn ? 1 : 0, tweenTime).ToColorA(canvasGroup),
-                Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, tweenTime).ToLocalScale(bgPos));
+            tokenSource?.Cancel();
+            tokenSource = new CancellationTokenSource();
+
+            Easing.Create<Linear>(IsOn ? 1 : 0, tweenTime).ToColorA(canvasGroup, tokenSource.Token);
+            Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, tweenTime).ToLocalScale(bgPos, tokenSource.Token);
         }
     }
 }

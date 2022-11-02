@@ -1,8 +1,12 @@
 using System;
+using System.Threading;
+using AnimeTask;
+using Cysharp.Threading.Tasks;
 using SoapUtils.DatabaseSystem;
 using SoapUtils.SoundSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 using Zenject;
 
 public class Test : MonoBehaviour
@@ -13,6 +17,12 @@ public class Test : MonoBehaviour
     [SerializeField] private AssetReferenceT<AudioClip> clipBGM;
     [SerializeField] private AssetReferenceT<AudioClip> clipLoop;
     [SerializeField] private AssetReferenceT<AudioClip> clipEffect;
+
+    [SerializeField] private Image testImg;
+
+    private CancellationTokenSource tokenSource;
+
+    private bool IsOn = false;
 
     private async void Start()
     {
@@ -43,5 +53,21 @@ public class Test : MonoBehaviour
         {
             soundService.DoPlaySound(clipEffect, 1, 0.5f);
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TestCancel();
+        }
+    }
+
+    private async void TestCancel()
+    {
+        IsOn = !IsOn;
+
+        tokenSource?.Cancel();
+        tokenSource = new CancellationTokenSource();
+
+        Easing.Create<Linear>(IsOn ? 1 : 0, 1f).ToColorA(testImg, tokenSource.Token);
+        Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, 1f).ToLocalScale(testImg.transform, tokenSource.Token);
     }
 }
