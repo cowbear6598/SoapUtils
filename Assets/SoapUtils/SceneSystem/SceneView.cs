@@ -36,7 +36,7 @@ namespace SoapUtils.SceneSystem
             await Easing.Create<Linear>(IsOn ? 1 : 0, 0.25f).ToColorA(canvasGroup);
             
             if(!IsOn)
-                updateDisposable.Dispose();
+                updateDisposable?.Dispose();
         }
     }
 }
