@@ -15,8 +15,7 @@ namespace SoapUtils.NotifySystem
     {
         [Inject] private readonly ISoundService soundService;
 
-        private CanvasGroup canvasGroup;
-
+        [SerializeField] private CanvasGroup     canvasGroup;
         [SerializeField] private RectTransform   bgPos;
         [SerializeField] private TextMeshProUGUI contentText;
         [SerializeField] private Button          cancelBtn;
@@ -26,11 +25,6 @@ namespace SoapUtils.NotifySystem
         [SerializeField] private AssetReferenceT<AudioClip> clip_Cancel;
 
         private CancellationTokenSource tokenSource;
-
-        private void Awake()
-        {
-            canvasGroup = GetComponent<CanvasGroup>();
-        }
 
         public void SetContent(string content)
         {

@@ -42,6 +42,7 @@ namespace SoapUtils.Editor.Tools
             AudioSource bgmSound = new GameObject("BGM_Sound").AddComponent<AudioSource>();
             bgmSound.outputAudioMixerGroup = bgmMixerGroup;
             bgmSound.playOnAwake           = false;
+            bgmSound.loop                  = true;
             bgmSound.transform.SetParent(rootTrans);
 
             soundView.SetBGMSound(bgmSound);
