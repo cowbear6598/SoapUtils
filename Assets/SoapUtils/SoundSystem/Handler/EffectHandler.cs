@@ -17,7 +17,8 @@ namespace SoapUtils.SoundSystem
                 AudioClip result = handler.Result;
 
                 var sound = view.GetEffectSound();
-                sound.pitch = pitch;
+                sound.pitch        = pitch;
+                sound.spatialBlend = 0;
                 sound.PlayOneShot(result, volume);
 
                 Observable.Timer(TimeSpan.FromSeconds(result.length + 1))
