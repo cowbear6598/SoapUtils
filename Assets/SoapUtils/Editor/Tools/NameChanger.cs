@@ -23,6 +23,8 @@ namespace SoapUtils.Editor.Tools
 
         private void OnGUI()
         {
+            EditorGUILayout.LabelField($"Selection Count: {Selection.count}");
+            
             prefixesName = EditorGUILayout.TextField("Prefixes Name: ", prefixesName);
             suffixesName = EditorGUILayout.TextField("Suffixes Name: ", suffixesName);
             startOrder   = EditorGUILayout.IntField("Start Order: ", startOrder);
