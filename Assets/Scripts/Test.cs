@@ -1,73 +1,58 @@
-using System;
-using System.Threading;
-using AnimeTask;
-using Cysharp.Threading.Tasks;
-using SoapUtils.DatabaseSystem;
+﻿using System;
+using SoapUtils.SceneSystem;
 using SoapUtils.SoundSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
 using Zenject;
 
 public class Test : MonoBehaviour
 {
-    [Inject] private readonly IDatabaseService databaseService;
-    [Inject] private readonly ISoundService    soundService;
+    [Inject] private ISceneService sceneService;
+    [Inject] private ISoundService soundService;
 
-    [SerializeField] private AssetReferenceT<AudioClip> clipBGM;
-    [SerializeField] private AssetReferenceT<AudioClip> clipLoop;
-    [SerializeField] private AssetReferenceT<AudioClip> clipEffect;
+    [SerializeField] private AssetReference test1Scene;
+    [SerializeField] private AssetReference test2Scene;
 
-    [SerializeField] private Image testImg;
-
-    private CancellationTokenSource tokenSource;
-
-    private bool IsOn = false;
-
-    private async void Start()
-    {
-        Debug.Log(await databaseService.DoGet(0, "/receipt/get"));
-    }
+    [SerializeField] private AssetReferenceT<AudioClip> clip_BGM;
+    [SerializeField] private AssetReferenceT<AudioClip> clip_Sound;
+    [SerializeField] private AssetReferenceT<AudioClip> clip_Loop;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            soundService.DoPlayBGM(clipBGM);
+            sceneService.DoLoadScene(test1Scene);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            sceneService.DoLoadScene(test2Scene);
+        }
+        
+        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            soundService.DoPlayBGM(clip_BGM);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            soundService.DoPlaySound(clip_Sound);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            soundService.DoPlayLoop(clip_Loop);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.G))
         {
             soundService.DoPlayBGM(null);
         }
-
-        if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.H))
         {
-            soundService.DoPlayLoop(clipLoop);
+            soundService.DoPlaySound(null);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.J))
         {
             soundService.DoPlayLoop(null);
         }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            soundService.DoPlaySound(clipEffect, 1, 0.5f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TestCancel();
-        }
-    }
-
-    private async void TestCancel()
-    {
-        IsOn = !IsOn;
-
-        tokenSource?.Cancel();
-        tokenSource = new CancellationTokenSource();
-
-        Easing.Create<Linear>(IsOn ? 1 : 0, 1f).ToColorA(testImg, tokenSource.Token);
-        Easing.Create<Linear>(IsOn ? Vector3.one : Vector3.zero, 1f).ToLocalScale(testImg.transform, tokenSource.Token);
     }
 }

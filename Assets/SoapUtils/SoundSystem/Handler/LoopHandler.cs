@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Zenject;
 
 namespace SoapUtils.SoundSystem
@@ -8,33 +9,30 @@ namespace SoapUtils.SoundSystem
     {
         [Inject] private readonly SoundView view;
 
-        public void Play(AssetReferenceT<AudioClip> clip, float volume)
+        private AudioClip currentClip;
+
+        public async void Play(AssetReferenceT<AudioClip> clipAsset, float volume)
         {
             var sound = view.GetLoopSound();
-            
-            if (clip == null)
-            {
-                sound.Stop();
-                
-                if (sound.clip != null)
-                    Addressables.Release(sound.clip);
 
-                sound.clip = null;
-                return;
+            sound.Stop();
+            sound.clip = null;
+
+            if (currentClip != null)
+            {
+                Addressables.Release(currentClip);
+                currentClip = null;
             }
-            
-            Addressables.LoadAssetAsync<AudioClip>(clip).Completed += handler =>
-            {
-                sound.Stop();
 
-                if (sound.clip != null)
-                    Addressables.Release(sound.clip);
+            if (clipAsset == null)
+                return;
 
-                sound.clip   = handler.Result;
-                sound.volume = volume;
+            currentClip = await Addressables.LoadAssetAsync<AudioClip>(clipAsset).Task;
 
-                sound.Play();
-            };
+            sound.clip   = currentClip;
+            sound.volume = volume;
+
+            sound.Play();
         }
     }
 }

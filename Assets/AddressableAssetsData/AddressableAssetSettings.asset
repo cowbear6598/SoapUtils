@@ -43,6 +43,8 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 0944a2b221f47b540a802adb1df09b0b, type: 2}
   - {fileID: 11400000, guid: 44cf3320be06b2f49b05a76a488f1e67, type: 2}
+  - {fileID: 11400000, guid: 017da01fe51f0c141ace898d7afcf7a4, type: 2}
+  - {fileID: 11400000, guid: 9340bd9246ae07b4687295e00142669b, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -83,7 +85,8 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - default
+    - sound
+    - scene
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 45921ed9b138de1459e044bba450875e, type: 2}

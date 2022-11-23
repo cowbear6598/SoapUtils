@@ -1,7 +1,6 @@
 ﻿using AnimeTask;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Zenject;
 
 namespace SoapUtils.SoundSystem
@@ -9,7 +8,9 @@ namespace SoapUtils.SoundSystem
     internal class BGMHandler
     {
         [Inject] private readonly SoundView view;
-        
+
+        private AudioClip currentClip;
+
         public async void Play(AssetReferenceT<AudioClip> clipAsset, float volume = 1)
         {
             if (clipAsset == null)
@@ -22,24 +23,25 @@ namespace SoapUtils.SoundSystem
                 Change(clip, volume);
             }
         }
-        
+
         private async void Change(AudioClip clip, float volume)
         {
-            var sound    = view.GetBgmSound();
-            var lastClip = sound.clip;
-            
+            var sound = view.GetBgmSound();
+
             await Easing.Create<Linear>(1, 0, 0.25f).ToAction(delta => sound.volume = delta);
 
             sound.Stop();
             sound.clip = clip;
 
-            if (lastClip == null)
-                Addressables.Release(lastClip);
+            if (currentClip != null)
+                Addressables.Release(currentClip);
 
+            currentClip = clip;
+            
             if (clip == null) return;
-            
+
             sound.Play();
-            
+
             await Easing.Create<Linear>(0, volume, 0.25f).ToAction(delta => sound.volume = delta);
         }
     }

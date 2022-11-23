@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine.AddressableAssets;
+using Zenject;
 
 namespace SoapUtils.SceneSystem
 {
@@ -6,7 +7,7 @@ namespace SoapUtils.SceneSystem
     {
         [Inject] private readonly LoadHandler loadHandler;
 
-        public void DoLoadScene(int sceneIndex, bool IsFadeOut = true) => loadHandler.LoadScene(sceneIndex, IsFadeOut);
+        public void DoLoadScene(AssetReference sceneAsset, bool IsFadeOut = true) => loadHandler.LoadScene(sceneAsset, IsFadeOut);
         public void DoFadeOut() => loadHandler.FadeOut();
     }
 }
