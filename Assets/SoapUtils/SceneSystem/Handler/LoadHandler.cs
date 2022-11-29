@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using SoapUtils.Installers;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -11,16 +12,17 @@ namespace SoapUtils.SceneSystem
 {
     internal class LoadHandler
     {
-        [Inject] private readonly StateHandler stateHandler;
-        [Inject] private readonly SceneView    view;
+        [Inject] private readonly StateHandler                        stateHandler;
+        [Inject] private readonly SceneView                           view;
+        [Inject] private readonly SoapSettingsInstaller.SceneSettings settings;
 
         private Queue<AsyncOperationHandle<SceneInstance>> loadedScenes = new();
 
-        public async void LoadScene(AssetReference sceneAsset, bool IsFadeOut = true)
+        public async void LoadScene(int sceneIndex, bool IsFadeOut = true)
         {
             if (!await PreLoadScene()) return;
 
-            Addressables.LoadSceneAsync(sceneAsset, LoadSceneMode.Additive).Completed += async (handle) =>
+            Addressables.LoadSceneAsync(settings.sceneAssets[sceneIndex], LoadSceneMode.Additive).Completed += async (handle) =>
             {
                 stateHandler.ChangeState(SceneState.Unloading);
 

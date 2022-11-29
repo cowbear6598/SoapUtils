@@ -21,11 +21,11 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            sceneService.DoLoadScene(test1Scene);
+            sceneService.DoLoadScene(0);
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            sceneService.DoLoadScene(test2Scene);
+            sceneService.DoLoadScene(1);
         }
         
         

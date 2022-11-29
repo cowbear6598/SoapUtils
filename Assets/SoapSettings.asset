@@ -16,3 +16,13 @@ MonoBehaviour:
     domains:
     - https://asia-east1-benz-5e3f3.cloudfunctions.net/api
     timeout: 10
+  sceneSettings:
+    sceneAssets:
+    - m_AssetGUID: e38b9cc905cb47742b7d75953b12ee02
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7ca5cf5e8f594f45b29cdfb2ae8da6e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

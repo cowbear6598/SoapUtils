@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace SoapUtils.Installers
@@ -8,10 +9,13 @@ namespace SoapUtils.Installers
     public class SoapSettingsInstaller : ScriptableObjectInstaller<SoapSettingsInstaller>
     {
         [SerializeField] private DatabaseSettings databaseSettings;
+        [SerializeField] private SceneSettings    sceneSettings;
         
         public override void InstallBindings()
         {
             Container.BindInstance(databaseSettings).IfNotBound();
+
+            Container.BindInstance(sceneSettings).IfNotBound();
         }
         
         [Serializable]
@@ -19,6 +23,12 @@ namespace SoapUtils.Installers
         {
             public string[] domains;
             public int      timeout;
+        }
+
+        [Serializable]
+        public class SceneSettings
+        {
+            public AssetReference[] sceneAssets;
         }
     }
 }
