@@ -14,7 +14,7 @@ namespace SoapUtils.SceneSystem
     {
         [Inject] private readonly StateHandler                        stateHandler;
         [Inject] private readonly SceneView                           view;
-        [Inject] private readonly SoapSettingsInstaller.SceneSettings settings;
+        [Inject] private readonly SceneSettingsInstaller.Settings settings;
 
         private Queue<AsyncOperationHandle<SceneInstance>> loadedScenes = new();
 
